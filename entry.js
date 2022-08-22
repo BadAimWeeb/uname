@@ -7,7 +7,15 @@ import os from "node:os";
 // Note: If no verification status is sent in 30s, the handler will also crash the plugin for not responding.
 NOCOM_AType.verifyPlugin(true);
 
-await NOCOM_AType.registerCommand("uname", () => {}, async data => {
+await NOCOM_AType.registerCommand("uname", {
+  args: {},
+  argsName: [],
+  description: {
+    fallback: "Print uname of the current server running this bot",
+    "en-US": "Print uname of the current server running this bot",
+    vi: "In ra uname của server đang chạy bot này"
+  }
+}, async data => {
   return {
     content: `${os.type()} ${os.hostname()} ${os.release()} ${os.version()} ${os.arch()}`
   }
